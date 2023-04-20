@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
-int add_two(int a, int b){
+int const add_two(int a, int b){
     return a+b;
 }
-void add_three(int a, int b, int c) {
+void const add_three(int a, int b, int c) {
    cout << a+b+c << endl;
 }
 int main(int argc, char **argv){
