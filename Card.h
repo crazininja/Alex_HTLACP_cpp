@@ -9,7 +9,7 @@ struct Card
     Card(int s, int r);
 
     //functions
-    std::string get_string() const;
+    std::string to_string() const;
 
 
     bool equals(const Card& c2) const;

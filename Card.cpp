@@ -14,7 +14,7 @@ Card::Card(int s, int r) {
 }
 
 
-string Card::get_string() const
+string Card::to_string() const
 {
     vector<string> suit_strings = { "Clubs", "Diamonds", "Hearts", "Spades" };
     vector<string> rank_strings = { "", "Ace", "2", "3", "4", "5", "6", "7",
