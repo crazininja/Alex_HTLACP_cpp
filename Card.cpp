@@ -35,8 +35,17 @@ bool Card::is_greater(const Card& c2) const
     if (suit < c2.suit) return false;
 
     // if suits are equal, check ranks
+
+    //first check if there are any aces
+
+    if (rank == 1 || c2.rank == 1) {
+        if (rank == c2.rank) return false;
+        if (rank > c2.rank) return false;
+        return true;
+    }
+
     if (rank > c2.rank) return true;
-    if (rank < c2.rank) return false;
+    //if (rank < c2.rank) return false;
 
     // if ranks are equal too, 1st card is not greater than the 2nd
     return false;

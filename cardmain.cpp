@@ -56,6 +56,13 @@ int main() {
     Card card1(2, 11);
     Card card2(1, 11);
 
+    Card ace(1, 1);
+    Card deuce(1, 2);
+
+    if (ace.is_greater(deuce)) {
+        cout << ace.to_string() << "is greater than" << deuce.to_string() << endl;
+    }
+
     if (card1.is_greater(card2)) {
         cout << card1.to_string() << " is greater than " << card2.to_string();
         cout << endl;
@@ -75,6 +82,7 @@ int main() {
     int indx = find_card(deck[17], deck);
     cout << "Your card was found at index " << indx << "." << endl;
 
+   
 
     indx = bin_search(deck[23], deck, 0, 51);
     cout << "Card found at index " << indx << endl;
