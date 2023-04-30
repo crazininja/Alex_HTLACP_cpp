@@ -2,6 +2,7 @@
 #include "Card.h"
 #include <vector>
 #include <string>
+#include "Deck.h"
 
 using namespace std;
 
@@ -49,4 +50,14 @@ bool Card::is_greater(const Card& c2) const
 
     // if ranks are equal too, 1st card is not greater than the 2nd
     return false;
+}
+
+// declare that Dec is a structure, without defining it
+struct Deck;
+int Card::find(const Deck& deck) const
+{
+    for (int i = 0; i < deck.cards.size(); i++) {
+        if (deck.cards[i].equals(*this)) return i;
+    }
+    return -1;
 }

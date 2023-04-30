@@ -36,13 +36,12 @@ int bin_search(const Card& card, const vector<Card>& deck, int l, int h) {
     }
 }
 
-vector<Card> build_deck() {
+vector<Card> build_deck()
+{
     vector<Card> deck(52);
-
-    
     int i = 0;
-    for (int suit = 0; suit <= 3; suit++) {
-        for (int rank = 1; rank <= 13; rank++) {
+    for (Suit suit = CLUBS; suit <= SPADES; suit = Suit(suit + 1)) {
+        for (Rank rank = ACE; rank <= KING; rank = Rank(rank + 1)) {
             deck[i].suit = suit;
             deck[i].rank = rank;
             i++;
