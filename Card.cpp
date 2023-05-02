@@ -98,13 +98,13 @@ void Deck::swap_cards(int card_1, int card_2) {
     cards[card_2] = position_1;
 } 
 
-// void Deck::shuffle()
-// {
-//     for (int i = 0; i < cards.size(); i++) {
-//         int rand_card = random_between(0, cards.size() - 1);
-//         swap_cards(i, rand_card);
-//     }
-// }
+void Deck::shuffle()
+{
+    for (int i = 0; i < cards.size(); i++) {
+        int rand_card = random_between(0, cards.size() - 1);
+        swap_cards(i, rand_card);
+    }
+}
 
 Deck Deck::subdeck(int l, int h) const
 {
