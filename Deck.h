@@ -1,3 +1,8 @@
+#include "Card.h"
+#include <vector>
+
+using namespace std;
+
 struct Deck {
     vector<Card> cards;
 
