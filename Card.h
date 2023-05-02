@@ -38,8 +38,8 @@ struct Deck {
     void swap_cards(int card_1, int card_2);
     void shuffle();
     Deck subdeck(int l, int h) const;
-    // void add_card(const Card& c);
-    // Card remove_card();
+    void add_card(const Card& c);
+    Card remove_card();
     void print() const;
 };
 

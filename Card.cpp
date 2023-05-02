@@ -116,17 +116,17 @@ Deck Deck::subdeck(int l, int h) const
     return sub;
 }
 
-// void Deck::add_card(const Card& c)
-// {
-//     cards.push_back(c);
-// }
+void Deck::add_card(const Card& c)
+{
+    cards.push_back(c);
+}
 
-// Card Deck::remove_card()
-// {
-//     Card card = cards[cards.size() - 1];
-//     cards.pop_back();
-//     return card;
-// }
+Card Deck::remove_card()
+{
+    Card card = cards[cards.size() - 1];
+    cards.pop_back();
+    return card;
+}
 
 Deck::Deck(int size)
 {
