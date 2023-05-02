@@ -15,13 +15,14 @@ Card::Card(int s, int r) {
 }
 
 
+
 string Card::to_string() const
 {
     vector<string> suit_strings = { "Clubs", "Diamonds", "Hearts", "Spades" };
     vector<string> rank_strings = { "", "Ace", "2", "3", "4", "5", "6", "7",
                                    "8", "9", "10", "Jack", "Queen", "King" };
 
-    return rank_strings[rank] + " of " + suit_strings[suit];
+    return rank_strings.at(rank) + " of " + suit_strings.at(suit);
 }
 
 bool Card::equals(const Card& c2) const
@@ -69,8 +70,8 @@ Deck::Deck()
     int i = 0;
     for (Suit suit = CLUBS; suit <= SPADES; suit = Suit(suit + 1)) {
         for (Rank rank = ACE; rank <= KING; rank = Rank(rank + 1)) {
-            cards[i].suit = suit;
-            cards[i].rank = rank;
+            cards.at(i).suit = suit;
+            cards.at(i).rank = rank;
             i++;
         }
     }
@@ -79,7 +80,7 @@ Deck::Deck()
 void Deck::print() const
 {
     for (int i = 0; i < cards.size(); i++) {
-        cout << cards[i].to_string() << endl;
+        cout << cards.at(i).to_string() << endl;
     }
 }
 
