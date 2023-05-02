@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-
+ 
 using namespace std;
 
 Card::Card() {
@@ -132,4 +132,59 @@ Deck::Deck(int size)
 {
     vector<Card> temp(size);
     cards = temp;
+}
+
+Deck Deck::merge(const Deck& d) const
+{
+    // creates a new deck big enough for all the cards
+    Deck result(cards.size() + d.cards.size());
+
+    // use index i for place in first deck, j for place in other eck
+    int i = 0;
+    int j = 0;
+
+    //check if the other decks won
+    bool d_won = false;
+    bool i_won = false;
+    // k traverses the result deck
+    for (int k = 0; k < result.cards.size(); k++) {
+        // if this is empty, d wins, if d is empty, this wins;
+        if (i == cards.size()) { 
+            d_won = true;
+            break;
+        }
+        if (j == d.cards.size()){
+            i_won = true;
+            break;
+        }
+        //make sure cards arent equal; if they are, just the first one and skip
+        if (cards[i].equals(d.cards[j])) {
+            result.cards[k] = cards[i];
+            i++;
+            continue;
+        }
+        // otherwise, compare the two cards on top
+        if (d.cards[j].is_greater(cards[i])) {
+            result.cards[k] = d.cards[j];
+            j++;
+        } else {
+            //if not equal and not greater, then our card must be larger
+            result.cards[k] = cards[i];
+            i++;
+        }
+        // add winner to the new deck
+    }
+    //add on the rest if 'we' won or if the other deck won
+    if (d_won) {
+        //add ours
+        for (int k = i; k < result.cards.size(); k++) {
+            result.cards[k] = cards[i];
+        }
+    }
+    if (i_won) {
+        for (int k = j; k < result.cards.size(); k++) {
+            result.cards[k] = cards[j];
+        }
+    }
+    return result;
 }
