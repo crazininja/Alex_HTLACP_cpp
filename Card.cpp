@@ -90,6 +90,14 @@ int random_between(const int upper, const int lower) {
     return int((random_int % (upper - lower))) + lower;
 }
 
+void Deck::swap_cards(int card_1, int card_2) {
+    Card position_1 = cards[card_1];
+    Card position_2 = cards[card_2];
+    //swap positions
+    cards[card_1] = position_2;
+    cards[card_2] = position_1;
+} 
+
 // void Deck::shuffle()
 // {
 //     for (int i = 0; i < cards.size(); i++) {
