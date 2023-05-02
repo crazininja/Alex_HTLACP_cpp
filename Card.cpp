@@ -19,7 +19,7 @@ Card::Card(int s, int r) {
 string Card::to_string() const
 {
     vector<string> suit_strings = { "Clubs", "Diamonds", "Hearts", "Spades" };
-    vector<string> rank_strings = { "", "Ace", "2", "3", "4", "5", "6", "7",
+    vector<string> rank_strings = { "", "Agice", "2", "3", "4", "5", "6", "7",
                                    "8", "9", "10", "Jack", "Queen", "King" };
 
     return rank_strings.at(rank) + " of " + suit_strings.at(suit);
@@ -92,11 +92,20 @@ int random_between(const int upper, const int lower) {
 }
 
 void Deck::swap_cards(int card_1, int card_2) {
+    int suit_1 = cards[card_1].suit;
+    int rank_1 = cards[card_1].rank;
+    
     Card position_1 = cards[card_1];
     Card position_2 = cards[card_2];
-    //swap positions
-    cards[card_1] = position_2;
-    cards[card_2] = position_1;
+    //functionally swap the positions of the cards by changing their
+    //attributes
+    //because the other kind of swapping seems to cause an error...
+    //maybe that was due to references?
+    position_1.suit = position_2.suit;
+    position_1.rank = position_2.rank;
+    position_2.suit = suit_1;
+    position_2.rank = rank_1;
+
 } 
 
 void Deck::shuffle()
