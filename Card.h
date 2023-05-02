@@ -41,6 +41,7 @@ struct Deck {
     void add_card(const Card& c);
     Card remove_card();
     void print() const;
+    Deck merge(const Deck& d) const;
 };
 
 

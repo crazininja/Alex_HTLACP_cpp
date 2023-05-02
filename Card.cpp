@@ -134,6 +134,7 @@ Deck::Deck(int size)
     cards = temp;
 }
 
+//Deck merge(const Deck& d) const
 Deck Deck::merge(const Deck& d) const
 {
     // creates a new deck big enough for all the cards
