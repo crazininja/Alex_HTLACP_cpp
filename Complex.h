@@ -31,6 +31,8 @@ public:
     // member functions
     Complex operator + (const Complex& c);
     Complex operator * (Complex& c);
+    Complex operator - (const Complex& c);
+    Complex operator / (Complex& c);
     string str_cartesian();
     string str_polar();
 };

@@ -64,11 +64,23 @@ Complex Complex::operator + (const Complex& c)
     return Complex(real + c.real, imag + c.imag);
 }
 
+Complex Complex::operator - (const Complex& c) {
+    return Complex(real - c.real, imag - c.imag);
+}
+
 Complex Complex::operator * (Complex& c)
 {
     if (polar == false) calculate_polar();
     if (c.polar == false) c.calculate_polar();
     return Complex(mag * c.mag, theta + c.theta, POLAR);
+}
+
+Complex Complex::operator / (Complex& c)
+{
+    if (polar == false) calculate_polar();
+    if (c.polar == false) c.calculate_polar();
+    //should work according to khan academy - it is essentially the inverse of the above, so logically should work as well
+    return Complex(mag/c.mag, theta - c.theta, POLAR);
 }
 
 void Complex::calculate_cartesian()
