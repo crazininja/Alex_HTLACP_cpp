@@ -1,4 +1,5 @@
 #include "Complex.h"
+#include <string>
 
 
 Complex::Complex() {
@@ -18,12 +19,12 @@ Complex::Complex(double m, double t, Flag) {
     calculate_cartesian();
 }
 
-double Complex::get_real()
+double Complex::get_real() const
 {
     return real;
 }
 
-double Complex::get_imag()
+double Complex::get_imag() const
 {
     return imag;
 }
@@ -88,4 +89,9 @@ void Complex::calculate_cartesian()
     assert(polar == true);
     real = mag * cos(theta);
     imag = mag * sin(theta);
+}
+
+ostream& operator<<(ostream& os, Complex const& v){
+    os << v.get_real() <<  "+" << v.get_imag() << "i";
+    return os;
 }

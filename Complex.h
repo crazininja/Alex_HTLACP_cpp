@@ -23,8 +23,8 @@ public:
     Complex(double m, double t, Flag);
 
     // accessors
-    double get_real();
-    double get_imag();
+    double get_real() const;
+    double get_imag() const;
     double get_mag();
     double get_theta();
 
@@ -33,6 +33,7 @@ public:
     Complex operator * (Complex& c);
     Complex operator - (const Complex& c);
     Complex operator / (Complex& c);
+    friend ostream& operator<<(ostream& os, Complex const& v);
     string str_cartesian();
     string str_polar();
 };

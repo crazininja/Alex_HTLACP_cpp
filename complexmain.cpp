@@ -5,6 +5,7 @@ using namespace std;
 
 
 int main() {
-	Complex Zero = Complex();
+	Complex oneTwo = Complex(1, 2);
+	cout << oneTwo << endl;
 	return 0;
 }
