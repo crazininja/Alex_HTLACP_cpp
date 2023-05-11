@@ -102,7 +102,7 @@ class Stack {
             Node<T>* top = list->head;
             //make list head point to top of the list
             list->head = new_top;
-            new_top->next->head;
+            new_top->next = head;
         }
 
         bool empty() {
