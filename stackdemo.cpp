@@ -19,14 +19,16 @@ public:
 template <class T>
 class LinkedList
 {
-    int num_nodes;
-    Node<T>* head;
+
 
 public:
     LinkedList() {
         num_nodes = 0;
         head = nullptr;
     }
+    int num_nodes;
+    Node<T>* head;
+
 };
 
 template <class T>
@@ -58,7 +60,7 @@ Node<T>* remove_second(Node<T>* list) {
 
     Node<T>* first = list;
     //return nullptr if empty or only one element
-    if ((first == nullptr) || (first->next == nullptr)) {
+    if ((first == NULL) || (first->next == NULL)) {
         return nullptr;
     }
     Node<T>* second = list->next;
@@ -80,33 +82,34 @@ class Stack {
     public:
 
         Stack() {
-            list = nullptr;
+            list = LinkedList<T>();
         }
         Stack(LinkedList<T> lis) {
             list = lis;
         }
 
         Node<T>* pop() {
-            Node<T>* top = list->head;
+            Node<T>* top = list.head;
             //make it point to the next
-            list->head = list->head->next;
+            list.head = list.head->next;
             //return the head
             return top;
         }
 
         Node<T>* peek() {
-            return list->head;
+            return list.head;
         }
 
         void push(Node<T>* new_top) {
-            Node<T>* top = list->head;
+            Node<T>* top = list.head;
             //make list head point to top of the list
-            list->head = new_top;
-            new_top->next = head;
+            list.head = new_top;
+
+            new_top->next = top;
         }
 
         bool empty() {
-            if ((list == nullptr) || (list->head == nullptr)) {
+            if (list.head == nullptr) {
                 return true;
             }
             return false;
@@ -117,14 +120,14 @@ class Stack {
 
 int main(int argc, char** argv)
 {
-    //create a stack
+    //create a stacks
     Stack<int> number_tower = Stack<int>();
     for (int i = 1; i < 10; i++) {
-        number_tower.push(Node<int>(i, nullptr)*);
+        number_tower.push(new Node<int>(i, nullptr));
     }
     
     while (!number_tower.empty()) {
-        cout << number_tower.pop()->cargo  << endl;
+        cout << number_tower.pop() -> cargo  << endl;
     }
 
 
