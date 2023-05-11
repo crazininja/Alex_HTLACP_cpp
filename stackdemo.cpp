@@ -25,7 +25,7 @@ class LinkedList
 public:
     LinkedList() {
         num_nodes = 0;
-        head = NULL;
+        head = nullptr;
     }
 };
 
@@ -33,10 +33,10 @@ template <class T>
 void print_list(Node<T>* list) {
     Node<T>* node = list;
     cout << "(";
-    while (node != NULL) {
+    while (node != nullptr) {
         cout << node->cargo;
         node = node->next;
-        if (node != NULL) cout << ", ";
+        if (node != nullptr) cout << ", ";
     }
     cout >> ")";
 }
@@ -46,9 +46,9 @@ void print_for_list(Node<T>* list) {
     Node<T>* node = list;
     //safety
     cout << "(";
-    for (Node<T>* i = node; i != NULL; i = i->next) {
+    for (Node<T>* i = node; i != nullptr; i = i->next) {
         cout << i->cargo;
-        if (i->next != NULL) { cout << ","; }
+        if (i->next != nullptr) { cout << ","; }
     }
     cout << ")" << endl;
 }
@@ -57,9 +57,9 @@ template <class T>
 Node<T>* remove_second(Node<T>* list) {
 
     Node<T>* first = list;
-    //return null if empty or only one element
-    if ((first == NULL) || (first->next == NULL)) {
-        return NULL;
+    //return nullptr if empty or only one element
+    if ((first == nullptr) || (first->next == nullptr)) {
+        return nullptr;
     }
     Node<T>* second = list->next;
 
@@ -67,7 +67,7 @@ Node<T>* remove_second(Node<T>* list) {
     first->next = second->next;
 
     // remove the second node from the list and return a pointer to it
-    second->next = NULL;
+    second->next = nullptr;
     return second;
 }
 template <class T>
@@ -80,7 +80,7 @@ class Stack {
     public:
 
         Stack() {
-            list = NULL;
+            list = nullptr;
         }
         Stack(LinkedList<T> lis) {
             list = lis;
@@ -106,7 +106,7 @@ class Stack {
         }
 
         bool empty() {
-            if ((list == NULL) || (list->head == NULL)) {
+            if ((list == nullptr) || (list->head == nullptr)) {
                 return true;
             }
             return false;
@@ -120,7 +120,7 @@ int main(int argc, char** argv)
     //create a stack
     Stack<int> number_tower = Stack<int>();
     for (int i = 1; i < 10; i++) {
-        number_tower.push(Node<int>(i, NULL)*);
+        number_tower.push(Node<int>(i, nullptr)*);
     }
     
     while (!number_tower.empty()) {
