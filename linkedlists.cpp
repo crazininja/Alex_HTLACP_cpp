@@ -45,8 +45,25 @@ void print_for_list(Node<T>* list) {
     //safety
     for (Node<T>* i = node; i != NULL; i = i->next) {
         cout << i->cargo << endl;
-        if (v > 10) { break; }
     }
+}
+
+template <class T>
+Node<T>* remove_second(Node<T>* list) {
+
+    Node<T>* first = list;
+    //return null if empty or only one element
+    if ((first == NULL) || (first->next == NULL)) {
+        return NULL;
+    }
+    Node<T>* second = list->next;
+
+    // make the first node point to the third
+    first->next = second->next;
+
+    // remove the second node from the list and return a pointer to it
+    second->next = NULL;
+    return second;
 }
 
 int main(int argc, char** argv)
@@ -62,6 +79,26 @@ int main(int argc, char** argv)
     Node<string>* node = node1;
 
     print_for_list(node);
+
+    Node<string>* nodeA = new Node<string>("1", NULL);
+    Node<string>* nodeB = new Node<string>("2", NULL);
+    Node<string>* nodeC = new Node<string>("3", NULL);
+
+    nodeA->next = nodeB;
+    nodeB->next = nodeC;
+
+    Node<string>* num_node = nodeA;
+
+    //remove the second element
+
+    nodeA->next = NULL;
+    remove_second(nodeA);
+    //remove the fisrt element
+    nodeA = NULL;
+    remove_second(nodeA);
+
+
+
 
     return 0;
 }
