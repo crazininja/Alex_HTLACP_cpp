@@ -32,20 +32,25 @@ public:
 template <class T>
 void print_list(Node<T>* list) {
     Node<T>* node= list;
+    cout << "(";
     while (node != NULL) {
         cout << node->cargo;
         node = node->next;
         if (node != NULL) cout << ", ";
     }
+    cout >> ")";
 }
 
 template <class T>
 void print_for_list(Node<T>* list) {
     Node<T>* node = list;
     //safety
+    cout << "(";
     for (Node<T>* i = node; i != NULL; i = i->next) {
-        cout << i->cargo << endl;
+        cout << i->cargo;
+        if (i->next != NULL){ cout << ","; }
     }
+    cout << ")" << endl;
 }
 
 template <class T>
