@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 //regurgitate a line 
@@ -10,9 +11,8 @@ string input;
 cout << "Enter an expression" << endl;
 getline(cin, input);
 cout <<"input:" << input << " and it's size:" << input.length() << endl;
-vector<char> infix = vector<char>(input.begin(), input.end());
+vector<char> infix = vector<char>();
 
-cout <<"input:" << input << " and it's size:" << input.length() << endl;
 
 //for (int i = 0; i < input.length(); i++)  {
     //treaverse the string
@@ -22,11 +22,15 @@ cout <<"input:" << input << " and it's size:" << input.length() << endl;
 
 //cout << "infix size:" << infix.size() << endl;
 
- for (int i = 0; i < infix.size(); i++)  {
-//     //treaverse the string
-     cout << "cha:" << infix.at(i);
+ for (int i = 0; i < input.size(); i++)  {
+    cout << "pushing back:"<< input[i] << endl;
+    infix.push_back(input[i]);
  }
-// cout << endl;
+
+ for (int i = 0; i < infix.size(); i++)  {
+    cout << infix[i];
+ }
+
 
 
 
