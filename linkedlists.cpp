@@ -36,7 +36,7 @@ public:
             return;
         }
         tail->next = new Node<T>(value, NULL);
-        tail = next;
+        tail = tail->next;
         num_nodes++;
     }
 
@@ -63,6 +63,10 @@ public:
 
     void insert_at(T value, int pos) {
         if (pos > num_nodes-1) {
+            if (pos == num_nodes) {
+                insert_at_end(value);
+                return;
+            }
             throw runtime_error("position is too high");
         }
         if (pos < 0) {
@@ -78,11 +82,13 @@ public:
         //start at the first node and traverse
         Node<T>* node = head->next;
         Node<T>* lag_node = head;
-        for (int position = 1; !(position > pos); position++) {
+        for (int position = 1; (position < pos); position++) {
             node = node->next;
             lag_node = lag_node->next;
         }
         //node is the node we want to replace
+        cout << "lag node:" << lag_node->cargo << endl;
+        cout << "next node:" << node->cargo << endl;
         lag_node->next = new Node<T>(value, node);
         num_nodes++;
         return;
@@ -90,8 +96,8 @@ public:
 };
 
 template <class T>
-void print_list(Node<T>* list) {
-    Node<T>* node= list;
+void print_list(LinkedList<T>* list) {
+    Node<T>* node= list->head;
     cout << "(";
     while (node != NULL) {
         cout << node->cargo;
@@ -104,7 +110,14 @@ void print_list(Node<T>* list) {
 
 
 int main(int argc, char** argv)
-{
+{   
+    LinkedList<int>* one_two_three = new LinkedList<int>();
+    one_two_three->insert_at_front(1);
+    one_two_three->insert_at_end(3);
+    one_two_three->insert_at(2, 1);
+    one_two_three->insert_at(4, 3);
+    print_list(one_two_three);
+
 
 
     return 0;
