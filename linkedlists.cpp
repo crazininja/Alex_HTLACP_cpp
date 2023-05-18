@@ -19,13 +19,46 @@ public:
 template <class T>
 class LinkedList
 {
+public:
     int num_nodes;
     Node<T>* head;
+    Node<T>* tail;
 
-public:
     LinkedList() {
         num_nodes = 0;
         head = NULL;
+        tail = NULL;
+    }
+
+    void insert_at_end(T value){
+        if (tail == NULL) {
+            tail = new Node<T>(value, NULL);
+            return;
+        }
+        tail->next = new Node<T>(value, NULL);
+        tail = next;
+        num_nodes++;
+    }
+
+    // modifiers
+    void insert_at_front(T cargo) {
+        Node<T>* front = new Node<T>(cargo, head);
+        head = front;
+        if (num_nodes == 0) { 
+            tail = front;
+            }
+        num_nodes++;
+    }
+
+    T remove_from_front() {
+        if (head == NULL)
+            throw runtime_error("Can't remove from empty list!");
+        T cargo = head->cargo;
+        Node<T>* front = head;
+        head = head->next;
+        delete front;
+        num_nodes--;
+        return cargo;
     }
 };
 
@@ -38,71 +71,13 @@ void print_list(Node<T>* list) {
         node = node->next;
         if (node != NULL) cout << ", ";
     }
-    cout >> ")";
+    cout << ")";
 }
 
-template <class T>
-void print_for_list(Node<T>* list) {
-    Node<T>* node = list;
-    //safety
-    cout << "(";
-    for (Node<T>* i = node; i != NULL; i = i->next) {
-        cout << i->cargo;
-        if (i->next != NULL){ cout << ","; }
-    }
-    cout << ")" << endl;
-}
 
-template <class T>
-Node<T>* remove_second(Node<T>* list) {
-
-    Node<T>* first = list;
-    //return null if empty or only one element
-    if ((first == NULL) || (first->next == NULL)) {
-        return NULL;
-    }
-    Node<T>* second = list->next;
-
-    // make the first node point to the third
-    first->next = second->next;
-
-    // remove the second node from the list and return a pointer to it
-    second->next = NULL;
-    return second;
-}
 
 int main(int argc, char** argv)
 {
-    //textbook tests
-    Node<string>* node1 = new Node<string>("I", NULL);
-    Node<string>* node2 = new Node<string>("love", NULL);
-    Node<string>* node3 = new Node<string>("templates!", NULL);
-
-    node1->next = node2;
-    node2->next = node3;
-
-    Node<string>* node = node1;
-
-    print_for_list(node);
-
-    Node<string>* nodeA = new Node<string>("1", NULL);
-    Node<string>* nodeB = new Node<string>("2", NULL);
-    Node<string>* nodeC = new Node<string>("3", NULL);
-
-    nodeA->next = nodeB;
-    nodeB->next = nodeC;
-
-    Node<string>* num_node = nodeA;
-
-    //remove the second element
-
-    nodeA->next = NULL;
-    remove_second(nodeA);
-    //remove the fisrt element
-    nodeA = NULL;
-    remove_second(nodeA);
-
-
 
 
     return 0;
