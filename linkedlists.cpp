@@ -62,15 +62,15 @@ public:
     }
 
     void insert_at(T value, int pos) {
-        if pos > num_nodes-1 {
-            throw runtime_error("position is too high")
+        if (pos > num_nodes-1) {
+            throw runtime_error("position is too high");
         }
-        if pos < 0 {
-            throw runtime_error("negative position inputted!")
+        if (pos < 0) {
+            throw runtime_error("negative position inputted!");
         }
-        if (position = 0) {
+        if (pos == 0) {
             Node<T>* next_node = head;
-            head = new Node(value, next_node);
+            head = new Node<T>(value, next_node);
             num_nodes++;
             return;
         }
@@ -83,7 +83,7 @@ public:
             lag_node = lag_node->next;
         }
         //node is the node we want to replace
-        lag_node->next = new Node(value, node);
+        lag_node->next = new Node<T>(value, node);
         num_nodes++;
         return;
     }
