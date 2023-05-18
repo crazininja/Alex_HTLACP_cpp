@@ -60,6 +60,33 @@ public:
         num_nodes--;
         return cargo;
     }
+
+    void insert_at(T value, int pos) {
+        if pos > num_nodes-1 {
+            throw runtime_error("position is too high")
+        }
+        if pos < 0 {
+            throw runtime_error("negative position inputted!")
+        }
+        if (position = 0) {
+            Node<T>* next_node = head;
+            head = new Node(value, next_node);
+            num_nodes++;
+            return;
+        }
+
+        //start at the first node and traverse
+        Node<T>* node = head->next;
+        Node<T>* lag_node = head;
+        for (int position = 1; !(position > pos); position++) {
+            node = node->next;
+            lag_node = lag_node->next;
+        }
+        //node is the node we want to replace
+        lag_node->next = new Node(value, node);
+        num_nodes++;
+        return;
+    }
 };
 
 template <class T>
