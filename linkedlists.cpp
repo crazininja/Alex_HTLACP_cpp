@@ -33,6 +33,8 @@ public:
     void insert_at_end(T value){
         if (tail == NULL) {
             tail = new Node<T>(value, NULL);
+            head = tail;
+            num_nodes++;
             return;
         }
         tail->next = new Node<T>(value, NULL);
@@ -63,12 +65,14 @@ public:
 
     void insert_at(T value, int pos) {
         if (pos > num_nodes-1) {
+            //insert at the end; the end position will be the number of nodes
             if (pos == num_nodes) {
                 insert_at_end(value);
                 return;
             }
             throw runtime_error("position is too high");
         }
+
         if (pos < 0) {
             throw runtime_error("negative position inputted!");
         }
@@ -79,7 +83,12 @@ public:
             return;
         }
 
-        //start at the first node and traverse
+        //now that we no it doesn't need to be at the front and the position is valid
+        //simply just traverse the list until we reach our desired position
+
+        //potential optimization: just use the lag node, but it might be less readable?
+
+        //start at the first node so we can have a lag node and traverse
         Node<T>* node = head->next;
         Node<T>* lag_node = head;
         for (int position = 1; (position < pos); position++) {
@@ -115,7 +124,9 @@ int main(int argc, char** argv)
     one_two_three->insert_at_front(1);
     one_two_three->insert_at_end(3);
     one_two_three->insert_at(2, 1);
-    one_two_three->insert_at(4, 3);
+    cout << one_two_three->num_nodes << endl;
+    one_two_three->insert_at(4, 2);
+    one_two_three->insert_at_end(5);
     print_list(one_two_three);
 
 
