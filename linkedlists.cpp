@@ -164,8 +164,8 @@ int main(int argc, char** argv)
     one_two_three->modify_node(2, 3);
     one_two_three->modify_node(3, 4);
     print_list(one_two_three);
-    cout << endl << "let's insert a 25 after 3!" << endl;
-    one_two_three->insert_at(2, 25);
+    cout << endl << "let's insert a 25 after 2!" << endl;
+    one_two_three->insert_at(25, 2);
     print_list(one_two_three);
     cout << "Endl of program" << endl;
 
